@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { useState, useEffect } from "react"
+import ReactDOM from "react-dom"
+import Axios from "axios"
+import "./styles/index.scss"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// Components
+import Header from "./components/Header"
+import GifsContainer from "./components/GifsContainer"
+import Search from "./components/Search"
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function App() {
+  const [gifs, setGifs] = useState([])
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false)
+
+  async function fetchTrendingGifs() {
+    const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
+    try {
+      const response = await Axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API_KEY}&limit=40`)
+      setGifs(response.data.data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    fetchTrendingGifs()
+    console.log(gifs)
+  }, [])
+
+  return (
+    <div className="App">
+      <Header isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
+      <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
+      {gifs && <GifsContainer gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"))

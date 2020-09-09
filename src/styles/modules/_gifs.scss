@@ -1,0 +1,56 @@
+.gifs-container {
+  .wrapper {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    // grid-template-rows: repeat(6, 200px);
+    grid-gap: 1rem;
+    grid-auto-flow: dense;
+    .gif-wrapper {
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      &:hover {
+        .hover-overlay {
+          opacity: 0.8;
+        }
+      }
+      .hover-overlay {
+        width: 100%;
+        height: 100%;
+        background-color: $main;
+        opacity: 0;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        transition: opacity 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+          outline: none;
+          border: 1px solid $mint;
+          background-color: transparent;
+          cursor: pointer;
+          font-size: 40px;
+          height: 70px;
+          width: 70px;
+          margin: 5px;
+          border-radius: 100%;
+          &:hover {
+            border: 1px solid $yellow;
+          }
+        }
+        .save-btn {
+          color: $yellow;
+        }
+        .share-btn {
+          color: rgb(175, 175, 175);
+        }
+      }
+    }
+  }
+}
