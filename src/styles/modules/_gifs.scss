@@ -1,6 +1,12 @@
 .gifs-container {
+  overflow-y: auto;
+  height: 100vh;
+  @include atLarge {
+    display: inline-block;
+  }
   .wrapper {
-    margin-top: 40px;
+    // margin-top: 12px;
+    // padding-bottom: 1000px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     // grid-template-rows: repeat(6, 200px);

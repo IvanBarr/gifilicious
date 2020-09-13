@@ -4,7 +4,7 @@ import Axios from "axios"
 import "./styles/index.scss"
 
 // Components
-import Header from "./components/Header"
+import Nav from "./components/Nav"
 import GifsContainer from "./components/GifsContainer"
 import Search from "./components/Search"
 
@@ -29,8 +29,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
-      <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
+      <header>
+        <Nav isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
+        <Search isFavoritesOpen={isFavoritesOpen} setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
+      </header>
       {gifs && <GifsContainer gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
     </div>
   )

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Axios from "axios"
 
-function Search({ setGifs, fetchTrendingGifs }) {
-  const [category, setCategory] = useState("")
+function Search({ isFavoritesOpen, setGifs, fetchTrendingGifs }) {
+  const [category, setCategory] = useState("Trending")
   const [searchedCategory, setSearchedCategory] = useState("")
 
   async function fetchSearchedGifs() {
@@ -20,7 +20,8 @@ function Search({ setGifs, fetchTrendingGifs }) {
     setSearchedCategory(inputTextValue)
   }
 
-  function submitHandler() {
+  function submitHandler(e) {
+    e.preventDefault()
     {
       searchedCategory && setCategory(searchedCategory)
     }
@@ -33,6 +34,28 @@ function Search({ setGifs, fetchTrendingGifs }) {
     newCategory !== "Trending" ? setCategory(newCategory) : fetchTrendingGifs()
   }
 
+  // function animateBtnBgColor() {
+  //   const buttons = document.getElementsByClassName("category-btns")
+  //   const buttonsArray = [...buttons]
+  //   buttonsArray.map((button) => {
+  //     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1))
+  //     const randomBetween2 = (min, max) => min + Math.floor(Math.random() * (max - min + 1))
+  //     const r = randomBetween(0, 255)
+  //     const g = randomBetween(0, 255)
+  //     const b = randomBetween(0, 255)
+  //     const r2 = randomBetween2(0, 255)
+  //     const g2 = randomBetween2(0, 255)
+  //     const b2 = randomBetween2(0, 255)
+  //     const rgb1 = `rgb(${r},${g},${b})`
+  //     const rgb2 = `rgb(${r2},${g2},${b2})`
+  //     button.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`
+  //   })
+  // }
+
+  // useEffect(() => {
+  //   animateBtnBgColor()
+  // }, [])
+
   useEffect(() => {
     fetchSearchedGifs()
     console.log(category)
@@ -40,19 +63,22 @@ function Search({ setGifs, fetchTrendingGifs }) {
 
   return (
     <div className="search-area">
-      <form action="#">
-        <input onChange={searchHandler} type="text" placeholder="Search..." />
-        <button onClick={submitHandler}>
-          <i className="fas fa-search"></i>
-        </button>
-      </form>
-      <div onClick={chooseCategoryHandler} className="select-category-btns">
-        <button>Trending</button>
-        <button>Boxing</button>
-        <button>Soccer</button>
-        <button>Cats</button>
-        <button>Dogs</button>
-        <button>Sports</button>
+      <div className="wrapper">
+        <form action="#" onSubmit={submitHandler}>
+          <input onChange={searchHandler} type="text" placeholder="Search..." />
+          <button>
+            <i className="fas fa-search"></i>
+          </button>
+        </form>
+        <div onClick={chooseCategoryHandler} className="select-category-btns">
+          <button className="category-btns">Trending</button>
+          <button className="category-btns">Boxing</button>
+          <button className="category-btns">Soccer</button>
+          <button className="category-btns">Cats</button>
+          <button className="category-btns">Dogs</button>
+          <button className="category-btns">Sports</button>
+        </div>
+        <h1 class="category-title">{isFavoritesOpen ? "Favorites" : category}</h1>
       </div>
     </div>
   )

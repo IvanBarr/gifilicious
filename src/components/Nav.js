@@ -1,13 +1,13 @@
 import React from "react"
 
-function Header({ isFavoritesOpen, setIsFavoritesOpen }) {
+function Nav({ isFavoritesOpen, setIsFavoritesOpen }) {
   function favoritesPageHandler() {
     setIsFavoritesOpen(!isFavoritesOpen)
     console.log(isFavoritesOpen)
   }
 
   return (
-    <header>
+    <div class="nav">
       <div className="wrapper">
         <div className="logo">
           <span className="text-special">Gif</span>ilicious
@@ -16,8 +16,8 @@ function Header({ isFavoritesOpen, setIsFavoritesOpen }) {
           <i className="fas fa-star"></i> Favorites
         </button>
       </div>
-    </header>
+    </div>
   )
 }
 
-export default Header
+export default Nav
