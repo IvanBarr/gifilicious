@@ -1,6 +1,7 @@
 import React from "react"
+import Search from "./Search"
 
-function Header({ isFavoritesOpen, setIsFavoritesOpen }) {
+function Header({ isFavoritesOpen, setIsFavoritesOpen, setGifs, fetchTrendingGifs }) {
   function favoritesPageHandler() {
     setIsFavoritesOpen(!isFavoritesOpen)
     console.log(isFavoritesOpen)
@@ -16,6 +17,7 @@ function Header({ isFavoritesOpen, setIsFavoritesOpen }) {
           <i className="fas fa-star"></i> Favorites
         </button>
       </div>
+      <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
     </header>
   )
 }

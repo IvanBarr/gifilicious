@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
-      <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
+      <Header fetchTrendingGifs={fetchTrendingGifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
+      {/* <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} /> */}
       {gifs && <GifsContainer gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
     </div>
   )
