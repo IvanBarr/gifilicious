@@ -4,9 +4,8 @@ import Axios from "axios"
 import "./styles/index.scss"
 
 // Components
-import Nav from "./components/Nav"
+import Header from "./components/Header"
 import GifsContainer from "./components/GifsContainer"
-import Search from "./components/Search"
 
 function App() {
   const [gifs, setGifs] = useState([])
@@ -29,10 +28,8 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <Nav isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
-        <Search isFavoritesOpen={isFavoritesOpen} setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} />
-      </header>
+      <Header fetchTrendingGifs={fetchTrendingGifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
+      {/* <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} /> */}
       {gifs && <GifsContainer gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
     </div>
   )

@@ -1,9 +1,7 @@
 .gifs-container {
-  overflow-y: auto;
+  overflow-y: scroll;
   height: 100vh;
-  @include atLarge {
-    display: inline-block;
-  }
+  width: 100%;
   .wrapper {
     // margin-top: 12px;
     // padding-bottom: 1000px;
