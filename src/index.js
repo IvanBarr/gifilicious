@@ -11,10 +11,12 @@ function App() {
   const [gifs, setGifs] = useState([])
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false)
 
+  const [category, setCategory] = useState("Trending")
+
   async function fetchTrendingGifs() {
     const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
     try {
-      const response = await Axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API_KEY}&limit=40`)
+      const response = await Axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API_KEY}&limit=50`)
       setGifs(response.data.data)
     } catch (e) {
       console.log(e)
@@ -23,14 +25,17 @@ function App() {
 
   useEffect(() => {
     fetchTrendingGifs()
-    console.log(gifs)
   }, [])
+
+  useEffect(() => {
+    console.log(gifs)
+  }, [gifs])
 
   return (
     <div className="App">
-      <Header fetchTrendingGifs={fetchTrendingGifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
+      <Header setCategory={setCategory} category={category} fetchTrendingGifs={fetchTrendingGifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
       {/* <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} /> */}
-      {gifs && <GifsContainer gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
+      {gifs && <GifsContainer category={category} gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
     </div>
   )
 }

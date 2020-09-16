@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react"
 import Axios from "axios"
 
-function Search({ isFavoritesOpen, setGifs, fetchTrendingGifs }) {
-  const [category, setCategory] = useState("Trending")
+function Search({ category, setCategory, isFavoritesOpen, setGifs, fetchTrendingGifs }) {
   const [searchedCategory, setSearchedCategory] = useState("")
 
   async function fetchSearchedGifs() {
     const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
     try {
-      const response = await Axios.get(`http://api.giphy.com/v1/gifs/search?q=${category}&api_key=${API_KEY}&limit=40`)
+      const response = await Axios.get(`http://api.giphy.com/v1/gifs/search?q=${category}&api_key=${API_KEY}&limit=50`)
       setGifs(response.data.data)
     } catch (e) {
       console.log(e)
@@ -78,7 +77,6 @@ function Search({ isFavoritesOpen, setGifs, fetchTrendingGifs }) {
           <button className="category-btns">Dogs</button>
           <button className="category-btns">Sports</button>
         </div>
-        <h1 class="category-title">{isFavoritesOpen ? "Favorites" : category}</h1>
       </div>
     </div>
   )
