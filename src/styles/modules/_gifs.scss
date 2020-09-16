@@ -1,27 +1,25 @@
 .gifsSectionWrapper {
   width: 100%;
-  overflow: hidden;
-  height: 800px;
+  height: 100vh;
   padding-top: 50px;
   position: relative;
+  overflow: hidden;
   .category-title {
     color: $white;
     width: 100%;
     text-align: center;
     background-color: $main;
     position: absolute;
-    // top: -10px;
     z-index: 999;
     box-shadow: 0px 6px 26px 31px $main;
   }
   .gifs-container {
     padding: 0 10px;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     grid-gap: 1rem;
-    grid-auto-flow: dense;
 
     scrollbar-color: $magenta transparent;
     &::-webkit-scrollbar {
