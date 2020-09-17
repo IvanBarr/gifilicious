@@ -27,9 +27,9 @@ function App() {
     fetchTrendingGifs()
   }, [])
 
-  useEffect(() => {
-    console.log(gifs)
-  }, [gifs])
+  // useEffect(() => {
+  //   console.log(gifs)
+  // }, [gifs])
 
   return (
     <div className="App">

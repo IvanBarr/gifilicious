@@ -30,7 +30,7 @@ function Search({ category, setCategory, isFavoritesOpen, setGifs, fetchTrending
     const target = e.target
     if (target.tagName !== "BUTTON") return
     const newCategory = target.innerText
-    newCategory !== "Trending" ? setCategory(newCategory) : fetchTrendingGifs()
+    setCategory(newCategory)
   }
 
   // function animateBtnBgColor() {
@@ -56,8 +56,7 @@ function Search({ category, setCategory, isFavoritesOpen, setGifs, fetchTrending
   // }, [])
 
   useEffect(() => {
-    fetchSearchedGifs()
-    console.log(category)
+    category !== "Trending" ? fetchSearchedGifs() : fetchTrendingGifs()
   }, [category])
 
   return (
