@@ -1,10 +1,9 @@
 import React from "react"
 import Search from "./Search"
 
-function Header({ category, setCategory, isFavoritesOpen, setIsFavoritesOpen, setGifs, fetchTrendingGifs }) {
+function Header({ setCategory, isFavoritesOpen, setIsFavoritesOpen }) {
   function favoritesPageHandler() {
     setIsFavoritesOpen(!isFavoritesOpen)
-    console.log(isFavoritesOpen)
   }
 
   return (
@@ -19,7 +18,7 @@ function Header({ category, setCategory, isFavoritesOpen, setIsFavoritesOpen, se
           </button>
         </nav>
       </div>
-      <Search setGifs={setGifs} category={category} setCategory={setCategory} fetchTrendingGifs={fetchTrendingGifs} />
+      <Search setCategory={setCategory} />
     </header>
   )
 }

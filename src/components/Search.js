@@ -1,18 +1,7 @@
-import React, { useState, useEffect } from "react"
-import Axios from "axios"
+import React, { useState } from "react"
 
-function Search({ category, setCategory, setGifs, fetchTrendingGifs }) {
+function Search({ setCategory }) {
   const [searchedCategory, setSearchedCategory] = useState("")
-
-  async function fetchSearchedGifs() {
-    const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
-    try {
-      const response = await Axios.get(`http://api.giphy.com/v1/gifs/search?q=${category}&api_key=${API_KEY}&limit=50`)
-      setGifs(response.data.data)
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   function searchHandler(e) {
     const inputTextValue = e.target.value
@@ -21,9 +10,8 @@ function Search({ category, setCategory, setGifs, fetchTrendingGifs }) {
 
   function submitHandler(e) {
     e.preventDefault()
-    {
-      searchedCategory && setCategory(searchedCategory)
-    }
+
+    searchedCategory && setCategory(searchedCategory)
   }
 
   function chooseCategoryHandler(e) {
@@ -32,10 +20,6 @@ function Search({ category, setCategory, setGifs, fetchTrendingGifs }) {
     const newCategory = target.innerText
     setCategory(newCategory)
   }
-
-  useEffect(() => {
-    category !== "Trending" ? fetchSearchedGifs() : fetchTrendingGifs()
-  }, [category])
 
   return (
     <div className="search-area">

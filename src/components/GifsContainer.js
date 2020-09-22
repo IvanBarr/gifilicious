@@ -13,6 +13,7 @@ function GifsContainer({ category, gifs, setGifs, isFavoritesOpen }) {
           return <Gif gifs={gifs} setGifs={setGifs} gifImageUrl={gif.images.preview_gif.url} key={index} index={index} />
         }
       }
+      return null
     })
   }
 
