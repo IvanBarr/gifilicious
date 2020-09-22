@@ -19,9 +19,9 @@ function Gif({ gifs, setGifs, gifImageUrl, index }) {
     <div className="gif-wrapper">
       <img src={gifImageUrl} alt="" />
       <div className="hover-overlay">
-        <button className="share-btn">
+        {/* <button className="share-btn">
           <i className="fas fa-share-alt-square"></i>
-        </button>
+        </button> */}
         <button onClick={favoritesHandler} className="save-btn">
           <i className={`${gifs[index].favorited ? "fas" : "far"} fa-star`}></i>
         </button>
