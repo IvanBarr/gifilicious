@@ -19,7 +19,7 @@ function App() {
     async function fetchTrendingGifs() {
       const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
       try {
-        const response = await Axios.get(`http://api.giphy.com/v1/gifs/trending?&api_key=${API_KEY}&limit=50`)
+        const response = await Axios.get(`https://api.giphy.com/v1/gifs/trending?&api_key=${API_KEY}&limit=50`)
         setGifs(response.data.data)
       } catch (e) {
         console.log(e)
@@ -29,7 +29,7 @@ function App() {
     async function fetchSearchedGifs() {
       const API_KEY = "8wEih3Gu7pXaPfNAWqBYhON7T8UTUFz9"
       try {
-        const response = await Axios.get(`http://api.giphy.com/v1/gifs/search?q=${category}&api_key=${API_KEY}&limit=50`)
+        const response = await Axios.get(`https://api.giphy.com/v1/gifs/search?q=${category}&api_key=${API_KEY}&limit=50`)
         setGifs(response.data.data)
       } catch (e) {
         console.log(e)
