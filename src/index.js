@@ -27,14 +27,9 @@ function App() {
     fetchTrendingGifs()
   }, [])
 
-  // useEffect(() => {
-  //   console.log(gifs)
-  // }, [gifs])
-
   return (
     <div className="App">
       <Header setCategory={setCategory} category={category} fetchTrendingGifs={fetchTrendingGifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} setIsFavoritesOpen={setIsFavoritesOpen} />
-      {/* <Search setGifs={setGifs} fetchTrendingGifs={fetchTrendingGifs} /> */}
       {gifs && <GifsContainer category={category} gifs={gifs} setGifs={setGifs} isFavoritesOpen={isFavoritesOpen} />}
     </div>
   )

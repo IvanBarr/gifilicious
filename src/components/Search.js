@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Axios from "axios"
 
-function Search({ category, setCategory, isFavoritesOpen, setGifs, fetchTrendingGifs }) {
+function Search({ category, setCategory, setGifs, fetchTrendingGifs }) {
   const [searchedCategory, setSearchedCategory] = useState("")
 
   async function fetchSearchedGifs() {
@@ -32,28 +32,6 @@ function Search({ category, setCategory, isFavoritesOpen, setGifs, fetchTrending
     const newCategory = target.innerText
     setCategory(newCategory)
   }
-
-  // function animateBtnBgColor() {
-  //   const buttons = document.getElementsByClassName("category-btns")
-  //   const buttonsArray = [...buttons]
-  //   buttonsArray.map((button) => {
-  //     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1))
-  //     const randomBetween2 = (min, max) => min + Math.floor(Math.random() * (max - min + 1))
-  //     const r = randomBetween(0, 255)
-  //     const g = randomBetween(0, 255)
-  //     const b = randomBetween(0, 255)
-  //     const r2 = randomBetween2(0, 255)
-  //     const g2 = randomBetween2(0, 255)
-  //     const b2 = randomBetween2(0, 255)
-  //     const rgb1 = `rgb(${r},${g},${b})`
-  //     const rgb2 = `rgb(${r2},${g2},${b2})`
-  //     button.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   animateBtnBgColor()
-  // }, [])
 
   useEffect(() => {
     category !== "Trending" ? fetchSearchedGifs() : fetchTrendingGifs()
