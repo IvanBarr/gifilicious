@@ -42,6 +42,7 @@ function App() {
         if (item.favorited) {
           return item
         }
+        return null
       })
     )
   }, [gifs])
