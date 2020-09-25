@@ -1,7 +1,11 @@
-import React from "react"
-import Search from "./Search"
+import React, { useContext } from "react"
+import Context from "../Context"
 
-function Header({ setCategory, isFavoritesOpen, setIsFavoritesOpen }) {
+// Components
+
+function Header({ setIsFavoritesOpen, children }) {
+  const { isFavoritesOpen } = useContext(Context)
+
   function favoritesPageHandler() {
     setIsFavoritesOpen(!isFavoritesOpen)
   }
@@ -14,11 +18,17 @@ function Header({ setCategory, isFavoritesOpen, setIsFavoritesOpen }) {
             <span className="text-special">Gif</span>ilicious
           </div>
           <button onClick={favoritesPageHandler} className="favorites-btn">
-            <i className="fas fa-star"></i> Favorites
+            {!isFavoritesOpen ? (
+              <p>
+                <i className="fas fa-star"></i> Favorites
+              </p>
+            ) : (
+              "Home"
+            )}
           </button>
         </nav>
       </div>
-      <Search setCategory={setCategory} />
+      {children}
     </header>
   )
 }

@@ -1,20 +1,26 @@
-import React from "react"
+import React, { useContext } from "react"
+import Context from "../Context"
 
 // Components
 import Gif from "./Gif"
 
-function GifsContainer({ category, gifs, setGifs, isFavoritesOpen }) {
+function GifsContainer({ category, favorites }) {
+  const { isFavoritesOpen, gifs } = useContext(Context)
+
   function createGifs() {
-    return gifs.map((gif, index) => {
-      if (!isFavoritesOpen) {
-        return <Gif gifs={gifs} setGifs={setGifs} gifImageUrl={gif.images.preview_gif.url} key={index} index={index} />
+    if (!isFavoritesOpen) {
+      return gifs.map((gif) => {
+        return <Gif gifImageUrl={gif.images.preview_gif.url} key={gif.id} favorited={gif.favorited} id={gif.id} />
+      })
+    } else {
+      if (favorites.length > 0) {
+        return favorites.map((gif) => {
+          return <Gif gifImageUrl={gif.images.preview_gif.url} key={gif.id} favorited={gif.favorited} id={gif.id} />
+        })
       } else {
-        if (gif.favorited) {
-          return <Gif gifs={gifs} setGifs={setGifs} gifImageUrl={gif.images.preview_gif.url} key={index} index={index} />
-        }
+        return <h1>Nothing Here, go add some gifs!</h1>
       }
-      return null
-    })
+    }
   }
 
   return (

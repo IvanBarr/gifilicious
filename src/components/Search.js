@@ -12,6 +12,7 @@ function Search({ setCategory }) {
     e.preventDefault()
 
     searchedCategory && setCategory(searchedCategory)
+    e.target.reset()
   }
 
   function chooseCategoryHandler(e) {

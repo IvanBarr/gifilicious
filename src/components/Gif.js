@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
+import Context from "../Context"
 
-function Gif({ gifs, setGifs, gifImageUrl, index }) {
+function Gif({ gifImageUrl, id, favorited }) {
+  const { gifs, setGifs } = useContext(Context)
+
   function favoritesHandler() {
     setGifs(
       gifs.map((item) => {
-        if (gifs.indexOf(item) === index) {
+        if (item.id === id) {
           return {
             ...item,
             favorited: !item.favorited,
@@ -23,7 +26,7 @@ function Gif({ gifs, setGifs, gifImageUrl, index }) {
           <i className="fas fa-share-alt-square"></i>
         </button> */}
         <button onClick={favoritesHandler} className="save-btn">
-          <i className={`${gifs[index].favorited ? "fas" : "far"} fa-star`}></i>
+          <i className={`${favorited ? "fas" : "far"} fa-star`}></i>
         </button>
       </div>
     </div>
