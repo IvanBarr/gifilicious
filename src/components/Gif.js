@@ -2,20 +2,36 @@ import React, { useContext } from "react"
 import Context from "../Context"
 
 function Gif({ gifImageUrl, id, favorited }) {
-  const { gifs, setGifs } = useContext(Context)
+  const { gifs, setGifs, setClickCount, favorites, setFavorites } = useContext(Context)
 
   function favoritesHandler() {
-    setGifs(
-      gifs.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            favorited: !item.favorited,
+    if (favorited) {
+      setFavorites(favorites.filter((item) => item.id !== id))
+      setGifs(
+        gifs.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              favorited: !item.favorited,
+            }
           }
-        }
-        return item
-      })
-    )
+          return item
+        })
+      )
+    } else {
+      setGifs(
+        gifs.map((item) => {
+          if (item.id === id) {
+            return {
+              ...item,
+              favorited: !item.favorited,
+            }
+          }
+          return item
+        })
+      )
+    }
+    setClickCount((prevValue) => prevValue + 1)
   }
 
   return (

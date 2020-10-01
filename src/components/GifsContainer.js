@@ -13,7 +13,7 @@ function GifsContainer({ category, favorites }) {
         return <Gif gifImageUrl={gif.images.preview_gif.url} key={gif.id} favorited={gif.favorited} id={gif.id} />
       })
     } else {
-      if (favorites.length > 0) {
+      if (favorites && favorites.length) {
         return favorites.map((gif) => {
           return <Gif gifImageUrl={gif.images.preview_gif.url} key={gif.id} favorited={gif.favorited} id={gif.id} />
         })
